@@ -1,0 +1,38 @@
+{
+  "name": "httprint",
+  "version": "0.0.0",
+  "description": "Log incoming requests on an HTTP server",
+  "keywords": [
+    "HTTP",
+    "express",
+    "debugging",
+    "development",
+    "print",
+    "logger",
+    "debug",
+    "💡"
+  ],
+  "homepage": "https://omrilotan.com/httprint",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omrilotan/httprint.git"
+  },
+  "author": "omrilotan",
+  "license": "UNLICENCE",
+  "bin": "./bin.js",
+  "main": "./index.js",
+  "scripts": {
+    "start": "node bin.js",
+    "lint": "standard"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "multiparty": "^4.2.2"
+  },
+  "devDependencies": {
+    "standard": "^16.0.3"
+  }
+}
