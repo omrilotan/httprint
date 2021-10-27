@@ -40,7 +40,7 @@ module.exports = ({ host, port, code = 201 } = {}) => new Promise((resolve, reje
         [
           `Message received on ${new Date()}`,
           ...Object.entries(data).map(
-            ([key, value]) => [`${cap(key)}:`, value]
+            ([key, value]) => [`${cap(key)}:`, JSON.stringify(value, null, 1)]
           ),
           '======================================'
         ].flat().join('\n')
