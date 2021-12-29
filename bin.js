@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 const app = require('.')
 
+const [
+  port = '1337'
+] = process.argv.slice(2)
+
 app({
   host: 'localhost',
-  port: 1337,
+  port,
   code: 200
 }).then(
   ({ host, port }) => console.log(

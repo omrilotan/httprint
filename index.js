@@ -1,3 +1,4 @@
+const { performance } = require('perf_hooks')
 const express = require('express')
 const { json } = require('body-parser')
 const cookieParser = require('cookie-parser')
@@ -7,6 +8,15 @@ const formData = require('./lib/form-data')
 module.exports = ({ host, port, code = 201 } = {}) => new Promise((resolve, reject) => {
   const app = express()
 
+  app.set('x-powered-by', false)
+  app.use((request, response, next) => {
+    Object.defineProperty(
+      request,
+      'start',
+      { value: performance.now() }
+    )
+    next()
+  })
   app.use(cors({ preflightContinue: true }))
   app.use(json())
   app.use(formData())
@@ -46,6 +56,7 @@ module.exports = ({ host, port, code = 201 } = {}) => new Promise((resolve, reje
         ].flat().join('\n')
       )
 
+      response.set('Server-Timing', `app; dur=${performance.now() - request.start}; desc="Time to respond"`)
       response.status(code).end()
     }
   )

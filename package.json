@@ -1,6 +1,6 @@
 {
   "name": "httprint",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Log incoming requests on an HTTP server",
   "keywords": [
     "HTTP",
