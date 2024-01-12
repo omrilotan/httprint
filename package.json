@@ -1,6 +1,6 @@
 {
   "name": "httprint",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Log incoming requests on an HTTP server",
   "keywords": [
     "HTTP",
@@ -21,6 +21,7 @@
   "license": "UNLICENCE",
   "bin": "./bin.js",
   "main": "./index.js",
+  "man": "man",
   "scripts": {
     "start": "node bin.js",
     "lint": "standard"
@@ -30,9 +31,11 @@
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "multiparty": "^4.2.2"
+    "inquirer": "^8.2.0",
+    "multiparty": "^4.2.2",
+    "yargs-parser": "^21.0.0"
   },
   "devDependencies": {
-    "standard": "^16.0.3"
+    "standard": "^17.1.0"
   }
 }

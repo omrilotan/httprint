@@ -1,0 +1,20 @@
+# httprint(1) -- Log incoming requests on an HTTP server
+
+$ npx httprint [port=1337] [host=localhost] [options]
+
+Options:
+┏━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━┓
+┃ Name               ┃ Description           ┃ Default   ┃
+┣━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━┫
+┃ --port, -p         ┃ Port to connect to    ┃ localhost ┃
+┣┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╋┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╋┈┈┈┈┈┈┈┈┈┈┈┫
+┃ --host, -h         ┃ Host to connect to    ┃ 1337      ┃
+┣┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╋┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╋┈┈┈┈┈┈┈┈┈┈┈┫
+┃ --status, -s       ┃ Status code to expect ┃ 201       ┃
+┣┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╋┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╋┈┈┈┈┈┈┈┈┈┈┈┫
+┃ --delay, -d        ┃ Delay in milliseconds ┃ 0         ┃
+┣┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╋┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╋┈┈┈┈┈┈┈┈┈┈┈┫
+┃ --interactive, -i  ┃ Interactive mode      ┃ No        ┃
+┣┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╋┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈╋┈┈┈┈┈┈┈┈┈┈┈┫
+┃ --help             ┃ Show help             ┃ No        ┃
+┗━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━┛

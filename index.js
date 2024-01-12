@@ -5,7 +5,16 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 const formData = require('./lib/form-data')
 
-module.exports = ({ host, port, code = 201 } = {}) => new Promise((resolve, reject) => {
+module.exports = ({
+  host = 'localhost',
+  port,
+  status = 201,
+  delay = 0
+} = {}) => new Promise((resolve, reject) => {
+  if (!port) {
+    return reject(new Error('port is required'))
+  }
+
   const app = express()
 
   app.set('x-powered-by', false)
@@ -18,12 +27,14 @@ module.exports = ({ host, port, code = 201 } = {}) => new Promise((resolve, reje
     next()
   })
   app.use(cors({ preflightContinue: true }))
-  app.use(json())
+  app.use(json({
+    type: ['application/json', 'application/csp-report', 'application/reports+json']
+  }))
   app.use(formData())
   app.use(cookieParser())
   app.use(
     '*',
-    (request, response) => {
+    (request, response, next) => {
       const {
         baseUrl,
         originalUrl,
@@ -56,8 +67,16 @@ module.exports = ({ host, port, code = 201 } = {}) => new Promise((resolve, reje
         ].flat().join('\n')
       )
 
-      response.set('Server-Timing', `app; dur=${performance.now() - request.start}; desc="Time to respond"`)
-      response.status(code).end()
+      function respond () {
+        response.set('Server-Timing', `app; dur=${performance.now() - request.start}; desc="Time to respond"`)
+        response.send('<!doctype html><html><body>Fix edge, single client, error case</body></html>')
+        // response.status(status).end()
+        next()
+      }
+
+      delay
+        ? setTimeout(respond, delay)
+        : respond()
     }
   )
 
